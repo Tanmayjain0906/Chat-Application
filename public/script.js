@@ -8,7 +8,7 @@ const userHead = document.getElementsByClassName("user-head")[0];
 
 var socket = io();
 
-form.addEventListener("submit", (e)=> {
+form.addEventListener("submit", (e) => {
     e.preventDefault();
     form.style.display = "none";
     document.body.style.background = "white";
@@ -16,63 +16,53 @@ form.addEventListener("submit", (e)=> {
     userHead.innerText = `Hi ${username.value}, Welcome to our chat room.`
 })
 
-function enableBtn()
-{
-   
-    if(message.value.length>0)
-    {
+function enableBtn() {
+
+    if (message.value.length > 0) {
         sendBtn.style.display = "block";
     }
-    else
-    {
+    else {
         sendBtn.style.display = "none";
     }
-  
+
 }
 
-sendBtn.addEventListener("click",(e) => {
+sendBtn.addEventListener("click", (e) => {
     e.preventDefault();
     let data = {
         id: socket.id,
         username: username.value,
         message: message.value,
     }
-
+    message.value = "";
     socket.emit("chat message", data);
     appendMessage(data, "sender");
-  
+    console.log("changes made");
     sendBtn.style.display = "none";
 })
 
 socket.on('emit message', (data) => { // io emit 
-    if(data.id !== socket.id)
-    {
+    if (data.id !== socket.id) {
         appendMessage(data, "receive");
     }
 })
 
-function appendMessage(data, type)
-{
+function appendMessage(data, type) {
     let div = document.createElement("div");
 
-    if(type == "sender")
-    {
+    if (type == "sender") {
         div.className = "sender";
         div.innerHTML = `<p class="username">${data.username}</p>
         <p class="text">${data.message}</p>`
-
-        message.value = "";
     }
-    else
-    {
+    else {
         div.className = "receive";
         div.innerHTML = `<p class="username">${data.username}</p>
         <p class="receive-text">${data.message}</p>`
-
-        message.value = "";
     }
+
     messageContainer.appendChild(div);
-    
+
 
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
