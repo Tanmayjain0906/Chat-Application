@@ -89,6 +89,7 @@ form button {
     width: fit-content;
     padding: 5px 8px;
     border-radius: 5px;
+    border-top-right-radius: 0;
     word-wrap: break-word;
 }
 
@@ -109,6 +110,7 @@ form button {
     padding: 5px 8px;
     color: white;
     border-radius: 5px;
+    border-top-left-radius: 0;
     background-color: gray;
 }
 
@@ -139,6 +141,7 @@ form button {
     align-items: center;
     padding: 10px;
     background-color: white;
+   
 }
 
 .input-bar input {

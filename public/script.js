@@ -39,6 +39,7 @@ sendBtn.addEventListener("click", (e) => {
     appendMessage(data, "sender");
     console.log("changes made");
     sendBtn.style.display = "none";
+
 })
 
 socket.on('emit message', (data) => { // io emit 
@@ -62,7 +63,7 @@ function appendMessage(data, type) {
     }
 
     messageContainer.appendChild(div);
-
+   
 
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
