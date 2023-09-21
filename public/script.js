@@ -40,6 +40,7 @@ sendBtn.addEventListener("click",(e) => {
 
     socket.emit("chat message", data);
     appendMessage(data, "sender");
+  
     sendBtn.style.display = "none";
 })
 
@@ -68,4 +69,6 @@ function appendMessage(data, type)
     }
     messageContainer.appendChild(div);
     message.value = "";
+
+    messageContainer.scrollTop = messageContainer.scrollHeight;
 }
