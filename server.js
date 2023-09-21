@@ -4,7 +4,7 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const PORT = 2222;
+const PORT = 4444;
 
 io.on('connection', (socket) => {
     socket.on('chat message', (data) => {
@@ -16,4 +16,4 @@ app.use(express.static('public'));
 
 server.listen(PORT);
 
-//http://Localhost:2222/
+//http://Localhost:4444/
