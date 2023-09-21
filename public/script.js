@@ -60,15 +60,19 @@ function appendMessage(data, type)
         div.className = "sender";
         div.innerHTML = `<p class="username">${data.username}</p>
         <p class="text">${data.message}</p>`
+
+        message.value = "";
     }
     else
     {
         div.className = "receive";
         div.innerHTML = `<p class="username">${data.username}</p>
         <p class="receive-text">${data.message}</p>`
+
+        message.value = "";
     }
     messageContainer.appendChild(div);
-    message.value = "";
+    
 
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
